@@ -37,7 +37,6 @@ pub fn run_rps_tournament_part_two() -> u32 {
 
     let mut current_score = 0;
 
-
     for word in words {
         let parts = word.split(' ').collect::<Vec<&str>>();
         if parts.len() != 2 {
@@ -49,7 +48,6 @@ pub fn run_rps_tournament_part_two() -> u32 {
     }
 
     return current_score;
-
 }
 
 fn calculate_points(game_parts: Vec<&str>) -> u32 {
@@ -138,7 +136,6 @@ fn calculate_points(game_parts: Vec<&str>) -> u32 {
     return points;
 }
 
-
 fn calculate_points_part_two(game_parts: Vec<&str>) -> u32 {
     let mut points = 0;
     let player_one_letter = game_parts[0];
@@ -165,7 +162,7 @@ fn calculate_points_part_two(game_parts: Vec<&str>) -> u32 {
         _ => 0,
     };
 
-    let player_two_value = determine_player_two_value(player_one_sign,outcome);
+    let player_two_value = determine_player_two_value(player_one_sign, outcome);
 
     if player_one_sign == "Rock" {
         match player_two_value {
@@ -220,32 +217,26 @@ fn calculate_points_part_two(game_parts: Vec<&str>) -> u32 {
     return points;
 }
 
-fn determine_player_two_value(player_one_move: &str,outcome: &str) -> u32{
+fn determine_player_two_value(player_one_move: &str, outcome: &str) -> u32 {
     let player_two_value = match player_one_move {
-        "Rock" => {
-            match outcome {
-                "Lose" => 3,
-                "Tie" => 1,
-                "Win" => 2,
-                _ => 0,
-            }
-        }
-        "Paper" => {
-            match outcome {
-                "Lose" => 1,
-                "Tie" => 2,
-                "Win" => 3,
-                _ => 0,
-            }
-        }
-        "Scissors" => {
-            match outcome {
-                "Lose" => 2,
-                "Tie" => 3,
-                "Win" => 1,
-                _ => 0,
-            }
-        }
+        "Rock" => match outcome {
+            "Lose" => 3,
+            "Tie" => 1,
+            "Win" => 2,
+            _ => 0,
+        },
+        "Paper" => match outcome {
+            "Lose" => 1,
+            "Tie" => 2,
+            "Win" => 3,
+            _ => 0,
+        },
+        "Scissors" => match outcome {
+            "Lose" => 2,
+            "Tie" => 3,
+            "Win" => 1,
+            _ => 0,
+        },
         _ => 0,
     };
 
