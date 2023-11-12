@@ -4,7 +4,8 @@ mod rock_paper_scissors;
 mod rucksack_reorganization;
 mod supply_stacks;
 mod tuning_tables;
+mod no_space_left_on_device;
 fn main() {
-    let your_num =tuning_tables::get_num_of_chars();
+    let your_num = no_space_left_on_device::sum_sizes_of_directories();
     print!("Your num: {}", your_num);
 }
