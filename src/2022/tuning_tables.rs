@@ -9,7 +9,9 @@ pub fn get_num_of_chars() -> u32 {
         .expect("Something went wrong reading the file");
 
     let mut num_of_chars_before_marker = 0;
-    let mut char_tracker: Vec<char> = vec!['0','0','0','0','0','0','0','0','0','0','0','0','0','0'];
+    let mut char_tracker: Vec<char> = vec![
+        '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
+    ];
 
     for i in 0..contents.len() {
         let chars = contents.chars().collect::<Vec<char>>();
@@ -24,11 +26,11 @@ pub fn get_num_of_chars() -> u32 {
                 all_chars_are_unique = false;
                 break;
             }
-        } 
+        }
 
         if all_chars_are_unique {
-            println!("{:?}",char_tracker);
-            return (i as u32)+1;
+            println!("{:?}", char_tracker);
+            return (i as u32) + 1;
         }
     }
     return 0;

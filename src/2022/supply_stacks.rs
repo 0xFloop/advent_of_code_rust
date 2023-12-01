@@ -73,8 +73,6 @@ pub fn get_top_crates() -> u32 {
             let current_char = stacks[from_stack as usize].pop().unwrap();
             stacks[to_stack as usize].push(current_char);
         }
-
-
     }
     let mut final_letters: Vec<&char> = Vec::new();
 
@@ -85,7 +83,6 @@ pub fn get_top_crates() -> u32 {
 
     return 3;
 }
-
 
 pub fn get_top_crates_part_two() -> u32 {
     let mut file = File::open("utils/day_5_input.txt").expect("File not found");
@@ -154,19 +151,16 @@ pub fn get_top_crates_part_two() -> u32 {
         let from_stack = instruction_split[3].parse::<u32>().unwrap() - 1;
         let to_stack = instruction_split[5].parse::<u32>().unwrap() - 1;
 
-        let mut current_move_holder:Vec<char> = Vec::new();
+        let mut current_move_holder: Vec<char> = Vec::new();
 
         for i in 0..num_to_move {
             current_move_holder.push(stacks[from_stack as usize].pop().unwrap());
         }
-        
+
         for i in 0..num_to_move {
             stacks[to_stack as usize].push(current_move_holder.pop().unwrap());
         }
-
-
     }
-
 
     let mut final_letters: Vec<&char> = Vec::new();
 
