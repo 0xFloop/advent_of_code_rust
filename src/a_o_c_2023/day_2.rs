@@ -152,9 +152,7 @@ pub fn solve_part_2() -> Option<u32> {
             }
         }
 
-
         let curr_game_sum = curr_game.blue * curr_game.red * curr_game.green;
-
 
         game_product_sum += curr_game_sum;
     }
