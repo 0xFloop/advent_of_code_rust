@@ -97,13 +97,13 @@ pub fn solve_part_2() -> Option<u64> {
 }
 
 
-pub fn recurse_ranges(
+fn recurse_ranges(
     ranges: Vec<Vec<u64>>,
     maps: &Vec<Vec<&str>>,
     mut curr_lowest: u64,
     range_to_step_map: &mut HashMap<Vec<u64>, u32>,
 ) -> u64 {
-    for mut range in ranges {
+    for mut range in ranges {   
         let range_to_map_idx = range_to_step_map.entry(range.clone()).or_insert_with(|| 0);
         let mut new_ranges: Vec<Vec<u64>> = Vec::new();
 
