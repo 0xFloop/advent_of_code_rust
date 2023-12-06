@@ -38,8 +38,6 @@ pub fn solve_part_1() -> Option<u64> {
                 let input = nums_in_line[1].parse::<u64>().unwrap();
                 let offset = nums_in_line[2].parse::<u64>().unwrap();
 
-                let dif = u64::abs_diff(output, input);
-
                 if input <= seed_num && seed_num < input + offset {
                     seed_num = seed_num + output - input;
                     break;
@@ -67,15 +65,11 @@ pub fn solve_part_2() -> Option<u64> {
 
     let sections: Vec<&str> = contents.split("\n\n").collect();
 
-    let mut seed_ranges_str = sections[0].split(": ").collect::<Vec<&str>>()[1]
+    let seed_ranges_str = sections[0].split(": ").collect::<Vec<&str>>()[1]
         .split(" ")
         .collect::<Vec<&str>>();
 
     let mut start_seed_ranges: Vec<Vec<u64>> = Vec::new();
-    let mut end_seed_ranges: Vec<Vec<u64>> = Vec::new();
-
-    let mut seeds: Vec<String> = Vec::new();
-    let mut curr_range_num = 0;
 
     for range in seed_ranges_str.chunks(2) {
         let mut temp_range_vec: Vec<u64> = Vec::new();
@@ -83,7 +77,6 @@ pub fn solve_part_2() -> Option<u64> {
         temp_range_vec.push(temp_range_vec[0] + range[1].parse::<u64>().unwrap() - 1);
 
         start_seed_ranges.push(temp_range_vec);
-        curr_range_num += 1;
     }
 
     let mut maps: Vec<Vec<&str>> = Vec::new();
@@ -96,10 +89,9 @@ pub fn solve_part_2() -> Option<u64> {
         maps.push(section_lines);
     }
 
-    let mut smallest = u64::MAX;
     let mut range_to_step_map: HashMap<Vec<u64>, u32> = HashMap::new();
 
-    smallest = recurse_ranges(start_seed_ranges, &maps, u64::MAX, &mut range_to_step_map);
+    let smallest = recurse_ranges(start_seed_ranges, &maps, u64::MAX, &mut range_to_step_map);
 
     return Some(smallest);
 }
