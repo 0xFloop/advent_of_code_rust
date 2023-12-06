@@ -38,12 +38,12 @@ pub fn solve_part_2() -> Option<u32> {
 }
 fn search_star(lines: &Vec<&str>, line_idx: usize, star_idx: usize) -> Result<u32, anyhow::Error> {
     //load the prior line if it exists
-    let prev_line=lines.get(line_idx - 1);
+    let prev_line = lines.get(line_idx - 1);
 
     //load in the current line
     let curr_line = lines[line_idx];
     //load in the next line if it exists
-    let next_line=lines.get(line_idx + 1);
+    let next_line = lines.get(line_idx + 1);
 
     let mut connected_nums: Vec<u32> = Vec::new();
     //loop through each of the three lines
@@ -156,12 +156,11 @@ pub fn solve_part_1() -> Option<u32> {
 }
 
 fn search_idx(lines: &Vec<&str>, line_idx: usize, char_idx: &usize) -> bool {
-    let prev_line= lines.get(line_idx - 1);
+    let prev_line = lines.get(line_idx - 1);
 
     let curr_line = lines[line_idx];
 
-    let next_line=lines.get(line_idx + 1);
-
+    let next_line = lines.get(line_idx + 1);
 
     let char_amt_to_sub;
     let char_amt_to_add;
