@@ -103,7 +103,11 @@ fn recurse_ranges(
     mut curr_lowest: u64,
     range_to_step_map: &mut HashMap<Vec<u64>, u32>,
 ) -> u64 {
-    for mut range in ranges {   
+    for mut range in ranges {
+        //each range is mapped to an index of the mutation map it was broken out from. this so so we dont 
+        //doubly apply mutations to a range. ie if [20,100] was broken out in step 4, when we go to analyze
+        //that range we will start from step 4
+        
         let range_to_map_idx = range_to_step_map.entry(range.clone()).or_insert_with(|| 0);
         let mut new_ranges: Vec<Vec<u64>> = Vec::new();
 
