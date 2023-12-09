@@ -286,7 +286,7 @@ fn determine_hand_type(hand: &str) -> HandType {
             return HandType::ThreeOfAKind;
         }
         return HandType::OnePair;
-    } else if contains_joker{
+    } else if contains_joker {
         return HandType::OnePair;
     }
     return HandType::HighCard;
