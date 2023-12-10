@@ -1,8 +1,8 @@
+use num::integer::lcm;
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::{self, Read};
 use std::ops::Index;
-use num::integer::lcm;
 
 #[derive(Debug)]
 struct MapNode {
@@ -62,7 +62,6 @@ pub fn solve_part_1() -> Option<u32> {
 }
 
 pub fn solve_part_2() -> Option<u128> {
-
     let mut file = File::open("utils/2023/day_8_input.txt").expect("File not found");
     let mut contents = String::new();
 
@@ -127,19 +126,19 @@ pub fn solve_part_2() -> Option<u128> {
                     .expect("can not find left node");
                 curr_node = next_node;
             }
-            if curr_node.value.ends_with('Z'){
-                first_end_nodes.push((&curr_node,curr_direction));
+            if curr_node.value.ends_with('Z') {
+                first_end_nodes.push((&curr_node, curr_direction));
                 break;
             }
         }
     }
-    let mut loop_lengths:Vec<u32> = Vec::new();
+    let mut loop_lengths: Vec<u32> = Vec::new();
 
     for (end_node, end_direction) in first_end_nodes {
         let mut steps_to_find = 0;
         let mut curr_node: &MapNode = end_node;
         let original_val = &end_node.value;
-        let origingal_dir = end_direction;       
+        let origingal_dir = end_direction;
         while true {
             let curr_direction = directions
                 .chars()
@@ -158,18 +157,18 @@ pub fn solve_part_2() -> Option<u128> {
                     .expect("can not find left node");
                 curr_node = next_node;
             }
-            if &curr_node.value == original_val && origingal_dir == curr_direction{
+            if &curr_node.value == original_val && origingal_dir == curr_direction {
                 break;
             }
         }
         loop_lengths.push(steps_to_find as u32);
     }
-    let mut curr_lcm:u128 = 0;
+    let mut curr_lcm: u128 = 0;
     for lengths in loop_lengths.chunks(2) {
         if curr_lcm == 0 {
             curr_lcm = lcm(lengths[0] as u128, lengths[1] as u128);
-        }else{
-        curr_lcm = lcm(curr_lcm, lcm(lengths[0] as u128, lengths[1] as u128));
+        } else {
+            curr_lcm = lcm(curr_lcm, lcm(lengths[0] as u128, lengths[1] as u128));
         }
     }
     Some(curr_lcm)
