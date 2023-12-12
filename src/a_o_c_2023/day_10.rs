@@ -108,7 +108,7 @@ pub fn solve() -> Option<u32> {
             inside_points.push(*dot);
         }
     }
-    
+
     for (line_idx, line) in lines.iter().enumerate() {
         for (char_idx, char) in line.chars().enumerate() {
             if barriers.contains(&Point::new(char_idx as i32, line_idx as i32)) {
