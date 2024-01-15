@@ -74,7 +74,7 @@ pub fn solve_part_2() -> Option<u128> {
     let directions = lines.remove(0);
     lines.remove(0);
 
-    let mut nodes_ending_in_A: Vec<String> = Vec::new();
+    let mut nodes_ending_in_capital_a: Vec<String> = Vec::new();
 
     for line in &mut lines {
         let mut_line = line.replace("(", "").replace(")", "").replace(" ", "");
@@ -94,12 +94,12 @@ pub fn solve_part_2() -> Option<u128> {
         node_map.insert(node_val.to_string(), new_node);
 
         if node_val.ends_with('A') {
-            nodes_ending_in_A.push(node_val.to_string());
+            nodes_ending_in_capital_a.push(node_val.to_string());
         }
     }
     let mut curr_nodes: Vec<&MapNode> = Vec::new();
 
-    for node_val in &nodes_ending_in_A {
+    for node_val in &nodes_ending_in_capital_a {
         curr_nodes.push(node_map.get(node_val).unwrap());
     }
     let mut first_end_nodes: Vec<(&MapNode, char)> = Vec::new();

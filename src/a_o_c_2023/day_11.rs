@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 use std::fs::File;
-use std::io::{self, Read};
+use std::io::Read;
 
 #[derive(Debug, PartialEq, Eq)]
 struct GalaxyPoint {
@@ -19,12 +19,12 @@ impl GalaxyPoint {
 }
 
 pub fn solve() -> Option<i32> {
-    let mut file = File::open("utils/2023/day_11_input.txt").expect("File not found");
+    let mut file = File::open("utils/2023/day_11_input.txt").expect("file not found");
 
     let mut contents = String::new();
 
     file.read_to_string(&mut contents)
-        .expect("Something went wrong reading the file");
+        .expect("something went wrong reading the file");
 
     let mut lines = contents.lines().collect::<Vec<&str>>();
 
@@ -87,16 +87,18 @@ pub fn solve_part_2() -> Option<i64> {
     file.read_to_string(&mut contents)
         .expect("Something went wrong reading the file");
 
+    let lines = contents.lines().collect::<Vec<&str>>();
+
     let mut lines = contents.lines().collect::<Vec<&str>>();
 
     let mut expanded_universe: Vec<String> = Vec::new();
-
-    let mut galaxy_map: HashMap<i32, GalaxyPoint> = HashMap::new();
 
     let mut galaxy_count = 0;
 
     let mut expanded_row_idxs: Vec<usize> = Vec::new();
     let mut expanded_column_idxs: Vec<usize> = Vec::new();
+
+    let mut galaxy_map: HashMap<i32, GalaxyPoint> = HashMap::new();
 
     for (line_idx, line) in lines.iter().enumerate() {
         if !line.contains('#') {
@@ -104,9 +106,9 @@ pub fn solve_part_2() -> Option<i64> {
         }
     }
 
-    for i in 0..lines.get(0).unwrap().len() {
+    for i in 0..lines.first()?.len() {
         let empty_column = lines.iter().all(|line| line.chars().nth(i).unwrap() != '#');
-        if empty_column {
+    for i in 0..lines.get(0).unwrap().len() {
             expanded_column_idxs.push(i);
         }
     }

@@ -82,6 +82,7 @@ pub fn solve() -> Option<u32> {
     //mark all nodes and paths that reach the edge as so
 
     let mut inside_points: Vec<Point> = Vec::new();
+    let tes_points : Vec<Point> = Vec::new();
 
     let points = map
         .iter()

@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::io::{self, Read};
+use std::io::Read;
 
 pub fn solve_part_2() -> Option<u32> {
     //shown. 12 red cubes, 13 green cubes, and 14 blue cubes
